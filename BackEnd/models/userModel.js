@@ -52,7 +52,7 @@ userSchema.method.comparePassword = async function (userPassword) {
 };
 
 //JWT TOKEN
-userSchema.methods.createToken = async function () {
+userSchema.methods.createJWT = async function () {
     return JWT.sign({ userId: this._id }, process.env.JWT_SECRET_KEY, {
         expiresIn: "3600",
     });

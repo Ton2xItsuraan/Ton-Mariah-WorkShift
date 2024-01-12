@@ -1,5 +1,4 @@
 import express, { request, response } from "express"
-import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from 'cors';
 import bodyParser from "body-parser";
@@ -8,6 +7,7 @@ import unknownEndpoint from "./middlewares/unkownEndpoint.js";
 import config from "./utils/config.js"
 import connectToDB from "./utils/connectToDB.js";
 import errorHandler from "./middlewares/errorHandler.js";
+import router from "./routes/authRoutes.js";
 
 
 const MONGODB_URI = config.MONGODB_URI;
@@ -25,6 +25,8 @@ app.use(express.json({limit: "10mb"}));
 app.use(express.urlencoded({extended:true}))
 app.use(express.static("dist"));
 app.use(morgan(':method :url :status :body'));
+
+app.use(router)
 
 
 app.use(unknownEndpoint);
