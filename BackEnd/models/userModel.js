@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
     profileUrl: {type: String},
     jobTitle: {type: String},
     about: {type: String},
+    
 },
     { timestamps: true }
 );
