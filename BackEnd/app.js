@@ -29,6 +29,9 @@ app.use(morgan("dev"));
 
 app.use(router);
 
+//error middleware
+
+
 
 app.use(unknownEndpoint);
 app.use(errorHandler);
