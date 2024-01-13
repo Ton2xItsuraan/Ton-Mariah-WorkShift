@@ -16,12 +16,12 @@ function MenuList({ user, onClick }) {
     <div>
       <Menu as="div" className="inline-block text-left">
         <div className=" flex">
-          <Menu.Button className="inline-flex gap-2 w-full rounded-md bg-white md:px-4 py-2 text-sm font-medium text-slate-700 hover:bg-opacity-20">
+          <Menu.Button className="inline-flex gap-2 w-full rounded-md bg-white md:px-4 py-2 text-sm font-medium text-slate-700 :bg-opacity-20">
             <div className="leading[80px] flex flex-col items-start">
               <p className="text-   font-semibold">
                 {user?.firstName ?? user?.name}
               </p>
-              <span className="text-sm text-blue-600">
+              <span className="text-sm text-green-600">
                 {user?.jobTitle ?? user?.email}
               </span>
             </div>
@@ -55,17 +55,17 @@ function MenuList({ user, onClick }) {
                       user?.accountType ? "user-profile" : "company-profile"
                     }`}
                     className={`${
-                      active ? "bg-blue-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md p-2 text-sm`}
+                      active ? "bg-[#00BF63] text-white" : "text-gray-900"
+                    } group flex w-full items-center rounded-md p-2 text-sm hover:text-black`}
                     onClick={onClick}
                   >
                     <CgProfile
                       className={`${
-                        active ? "text-white" : "text-gray-600"
+                        active ? "text-white" : "text-gray-900"
                       } mr-2 h-5 w-5`}
                       aria-hidden="true"
                     />
-                    {user?.accountType ? "User Profile" : "Comapany Profile"}
+                    {user?.accountType ? "User Profile" : "Company Profile"}
                   </Link>
                 )}
               </Menu.Item>
@@ -74,7 +74,7 @@ function MenuList({ user, onClick }) {
                   <button
                     onClick={() => handleLogout()}
                     className={`${
-                      active ? "bg-blue-500 text-white" : "text-gray-900"
+                      active ? "bg-[#00BF63] text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     <AiOutlineLogout
@@ -107,8 +107,8 @@ const Navbar = () => {
       <div className="relative bg-white z-50">
         <nav className="container mx-auto flex items-center justify-between p-5">
           <div>
-            <Link to="/" className="text-blue-600 font-bold text-xl">
-              Work<span className="text-black">Shift</span>
+            <Link to="/user-auth" className="text-green-900 font-bold text-xl">
+              Work<span className="text-green-600">Shift</span>
             </Link>
           </div>
           <ul className="hidden lg:flex gap-10 text-base">
@@ -131,7 +131,7 @@ const Navbar = () => {
               <Link to="/user-auth">
                 <CustomButton
                   title="Sign-in"
-                  containerStyles="text-blue-600 py-1.5 px-5 focus:outlione-none hover:bg-blue-800 hover:text-white rounded-full text-base border border-blue-600"
+                  containerStyles="text-green-600 py-1.5 px-5 focus:outlione-none :bg-green-800 :text-white rounded-full text-base border border-green-600"
                 />
               </Link>
             ) : (
@@ -141,13 +141,52 @@ const Navbar = () => {
             )}
             <Link to="/user-auth"></Link>
           </div>
+          <button
+            className="block lg:hidden text-slate-900"
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            {isOpen ? <AiOutlineClose size={26} /> : <HiMenuAlt3 size={26} />}
+          </button>
         </nav>
-        {/* mobile menue */}
+        {/* mobile menu */}
         <div
           className={`${
             isOpen ? "absolute flex bg-[#f7fdfd] " : "hidden"
           } container mx-auto lg:hidden flex-col pl-8 gap-3 py-5`}
-        ></div>
+        >
+          <Link to="/" onClick={handleCloseNavbar}>
+            Find Job
+          </Link>
+          <Link to="/companies" onClick={handleCloseNavbar}>
+            Companies
+          </Link>
+          <Link
+            onClick={handleCloseNavbar}
+            to={
+              user?.accountType === "seeker" ? "applly-gistory" : "upload-job"
+            }
+          >
+            {user?.accountType === "seeker" ? "Applications" : "Upload Job"}
+          </Link>
+          <Link to="/about-us" onClick={handleCloseNavbar}>
+            About
+          </Link>
+
+          <div className="w-full py-10">
+            {!user?.token ? (
+              <a href="/user-auth">
+                <CustomButton
+                  title="Sign In"
+                  containerStyles={`text-blue-600 py-1.5 px-5 focus:outline-none hover:bg-blue-700 hover:text-white rounded-full text-base border border-blue-600`}
+                />
+              </a>
+            ) : (
+              <div>
+                <MenuList user={user} onClick={handleCloseNavbar} />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );
