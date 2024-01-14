@@ -97,6 +97,7 @@ function MenuList({ user, onClick }) {
 
 const Navbar = () => {
   const user = users[1];
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCloseNavbar = () => {
@@ -116,7 +117,7 @@ const Navbar = () => {
               <Link to="/">Find Job</Link>
             </li>
             <li>
-              <Link to="/">Companies</Link>
+              <Link to="/companies">Companies</Link>
             </li>
             <li>
               <Link to="/upload-job">Upload Job</Link>
@@ -151,7 +152,7 @@ const Navbar = () => {
         {/* mobile menu */}
         <div
           className={`${
-            isOpen ? "absolute flex bg-[#f7fdfd] " : "hidden"
+            isOpen ? "absolute flex bg-[#F1FFEB] " : "hidden"
           } container mx-auto lg:hidden flex-col pl-8 gap-3 py-5`}
         >
           <Link to="/" onClick={handleCloseNavbar}>

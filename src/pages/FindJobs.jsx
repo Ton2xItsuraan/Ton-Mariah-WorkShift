@@ -49,7 +49,7 @@ const FindJobs = () => {
         setLocation={setJobLocation}
       />
 
-      <div className="container mx-auto flex gap-6 2xl:gap-10 md:px-5 py-0 md:py-6 bg-[#f7fdfd]">
+      <div className="container mx-auto flex gap-6 2xl:gap-10 md:px-5 py-0 md:py-6 bg-[#F1FFEB]">
         <div className="hidden md:flex flex-col w-1/6 h-fit bg-white shadow-sm">
           <p className="text-lg font-semibold text-slate-600">Filter Search</p>
 
@@ -111,7 +111,7 @@ const FindJobs = () => {
         <div className="w-full md:w-5/6 px-5 md:px-0">
           <div className="flex items-center justify-between mb-4">
             <p className="text-sm md:text-base">
-              Shwoing: <span className="font-semibold">1,902</span> Jobs
+              Showing: <span className="font-semibold">1,902</span> Jobs
               Available
             </p>
 

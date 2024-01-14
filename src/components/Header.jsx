@@ -42,7 +42,7 @@ const Header = ({
   setLocation,
 }) => {
   return (
-    <div className="bg-[#f7fdfd]">
+    <div className="bg-white">
       <div
         className={`container mx-auto px-5 ${
           type ? "h-[500px]" : "h-[350px]"
@@ -73,7 +73,7 @@ const Header = ({
                 onClick={handleClick}
                 title="Search"
                 containerStyles={
-                  "text-white py-2 md:py-3 px-3 md:px-10 focus:outline-none bg-[#1E302C] rounded-full md:rounded-md text-sm md:text-base"
+                  "text-white py-2 md:py-3 px-3 md:px-10 focus:outline-none bg-[#0C3B2E] rounded-full md:rounded-md text-sm md:text-base"
                 }
               />
             </div>
@@ -84,7 +84,7 @@ const Header = ({
               {popularSearch.map((search, index) => (
                 <span
                   key={index}
-                  className="bg-[#C3FEE1] text-[#00BF63] py-1 px-2 rounded-full text-sm md:text-base"
+                  className="bg-[#bdf4c8] text-[#00BF63] py-1 px-2 rounded-full text-sm md:text-base"
                 >
                   {search}
                 </span>
