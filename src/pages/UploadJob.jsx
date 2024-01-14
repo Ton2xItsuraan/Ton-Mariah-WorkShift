@@ -105,7 +105,7 @@ const UploadJob = () => {
                 Job Description
               </label>
               <textarea
-                className="rounded border border-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-base px-4 py-2 resize-none"
+                className="rounded border border-gray-400 focus:outline-none focus:border-[#00BF63] focus:ring-1 focus:ring-[#00BF63] text-base px-4 py-2 resize-none"
                 rows={4}
                 cols={6}
                 {...register("desc", {
@@ -125,7 +125,7 @@ const UploadJob = () => {
                 Core Responsibilities
               </label>
               <textarea
-                className="rounded border border-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-base px-4 py-2 resize-none"
+                className="rounded border border-gray-400 focus:outline-none focus:border-[#00BF63] focus:ring-1 focus:ring-[#00BF63] text-base px-4 py-2 resize-none"
                 rows={4}
                 cols={6}
                 {...register("resposibilities")}
@@ -140,7 +140,7 @@ const UploadJob = () => {
             <div className="mt-2">
               <CustomButton
                 type="submit"
-                containerStyles="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-8 py-2 text-sm font-medium text-white hover:bg-[#1d4fd846] hover:text-[#1d4fd8] focus:outline-none "
+                containerStyles="inline-flex justify-center rounded-md border border-transparent bg-[#00BF63] px-8 py-2 text-sm font-medium text-white hover:bg-[#0C3B2E] hover:text-white focus:outline-none "
                 title="Sumbit"
               />
             </div>

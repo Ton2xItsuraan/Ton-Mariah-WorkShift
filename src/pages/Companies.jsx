@@ -71,7 +71,7 @@ const Companies = () => {
             <CustomButton
               onClick={handleShowMore}
               title="Load More"
-              containerStyles={`text-blue-600 py-1.5 px-5 focus:outline-none hover:bg-blue-700 hover:text-white rounded-full text-base border border-blue-600`}
+              containerStyles={`text-[#00BF63] py-1.5 px-5 focus:outline-none hover:bg-[#0C3B2E] hover:text-white rounded-full text-base border border-[#00BF63]`}
             />
           </div>
         )}
