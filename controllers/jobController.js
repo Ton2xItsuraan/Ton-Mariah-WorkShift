@@ -130,8 +130,8 @@ export const updateJob = async (req, res, next) => {
 export const getJobPost = async (req, res, next) => {
     try {
         const { search, sort, location, jtype, exp } = req.query;
-        const type = jtype.split(","); //full-time part-time, part-time
-        const experience = exp.split(","); //2-6
+        const type = jtype?.split(","); //full-time part-time, part-time
+        const experience = exp?.split(","); //2-6
         
         let queryObject = {};
         if(location) {
@@ -186,11 +186,12 @@ export const getJobPost = async (req, res, next) => {
         const totalJobs = await Jobs.countDocuments(queryResult);
 
         //records count
-        const numOfPage = Math.ceil(total / limit);
+        const numOfPage = Math.ceil(totalJobs / limit);
 
             queryResult = queryResult.limit(limit * page);
 
             const jobs = await queryResult;
+
                 res.status(200).json({
                     success: true,
                     totalJobs,
@@ -210,7 +211,7 @@ export const getJobById = async (req, res, next) => {
         const { id } = req.params;
 
             const job = await Jobs.findById({ _id: id }).populate({
-                path: "comany",
+                path: "company",
                 select: "-password",
             });
             if(!job) {
@@ -255,7 +256,7 @@ export const deleteJobPost = async (req, res, next) => {
 
         res.status(200).send({
             success: true,
-            message: "Job Post Delted Successfully"
+            message: "Job Post Deleted Successfully"
         })
     } catch (error) {
         console.log(error);
