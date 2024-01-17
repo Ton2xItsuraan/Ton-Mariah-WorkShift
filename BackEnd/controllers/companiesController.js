@@ -63,7 +63,7 @@ export const signInCompany = async(req, res, next) => {
         //compare password
         const isMatch = await company.comparePassword(password); 
         if(!isMatch) {
-            next(error);
+            next("Invalid Password");
             return;
         };
             company.password = undefined;

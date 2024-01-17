@@ -7,10 +7,16 @@ import { AiOutlineClose, AiOutlineLogout } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
 import { users } from "../utils/data.js";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Logout } from "../redux/userSlice";
 
 function MenuList({ user, onClick }) {
-  const handleLogout = () => {};
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(Logout());
+    window.location.replace("/");
+  };
 
   return (
     <div>
@@ -40,7 +46,7 @@ function MenuList({ user, onClick }) {
         <Transition
           as={Fragment}
           enter="trasition ease-out duration-100"
-          enterForm="transform opacity-0 scale-95"
+          enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"
           leave="transition ease-in duration-75"
           leaveFrom="transform opacity-100 scale-100"
@@ -96,10 +102,9 @@ function MenuList({ user, onClick }) {
 }
 
 const Navbar = () => {
-  const user = users[1];
-
+  const { user } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(user);
   const handleCloseNavbar = () => {
     setIsOpen((prev) => !prev);
   };
