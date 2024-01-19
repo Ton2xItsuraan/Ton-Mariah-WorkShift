@@ -241,7 +241,7 @@ try {
           </h2>
 
           {user?.user?.accountType === undefined &&
-            info?._id === user?.user?._id && (
+            info?._id === user?._id && (
               <div className='flex items-center justifu-center py-5 md:py-0 gap-4'>
                 <CustomButton
                   onClick={() => setOpenForm(true)}
