@@ -13,7 +13,6 @@ export const createJob = async (req, res, next) => {
             experience,
             desc,
             requirements,
-            tags,
         } = req.body;
 
         if(
@@ -41,7 +40,6 @@ export const createJob = async (req, res, next) => {
                 vacancies,
                 experience,
                 detail: {desc, requirements},
-                tags,
                 company: id,
             };
 
@@ -52,8 +50,12 @@ export const createJob = async (req, res, next) => {
             //update the company info with job id
             const company = await Companies.findById(id);
 
-            company.jobPosts.push(job._id);
-            const updateCompany = await Companies.findByIdAndUpdate(id, company, {new: true,});
+                if(!company.jobPosts){
+                company.jobPosts = [];
+                }
+
+                company.jobPosts.push(job._id);
+                const updateCompany = await Companies.findByIdAndUpdate(id, company, {new: true,});
         
             res.status(200).json({
                 success: true,
