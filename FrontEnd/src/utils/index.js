@@ -15,7 +15,7 @@ export const apiRequest = async({url, token, data, method}) => {
             data: data,
             headers: {
                 "content-type": "application/json",
-                Authorizatioin: token? `Bearer ${token}` : "",
+                Authorization: token? `Bearer ${token}` : "",
             }
         });
 
@@ -30,7 +30,7 @@ export const apiRequest = async({url, token, data, method}) => {
 export const handleFileUpload = async(uploadFile) => {
     const formData = new FormData();
     formData.append("file", uploadFile);
-    formData.append("upload_preset", jobfinder);
+    formData.append("upload_preset", "workshiftApp");
 
     try {
         const response = await axios.post(

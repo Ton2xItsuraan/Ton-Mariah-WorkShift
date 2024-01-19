@@ -266,7 +266,7 @@ export const getCompanyJobListing = async (req, res, next) => {
 // GET SINGLE COMPANY
 export const getCompanyById = async (req, res, next) => {
     try {
-        const {id} = req.params
+        const { id } = req.params;
 
         const company = await Companies.findById({ _id: id }).populate({
             path: "jobposts",
@@ -275,18 +275,19 @@ export const getCompanyById = async (req, res, next) => {
             }
         });
 
-        if(!company) {
+        if (!company) {
             return res.status(200).send({
                 message: "Company Not Found",
                 success: false,
-            })
+            });
         }
 
+        // Corrected from response to res
         company.password = undefined;
-        response.status(200).json({
+        res.status(200).json({
             success: true,
             data: company,
-        })
+        });
     } catch (error) {
         console.log(error);
         res.status(404).json({ message: error.message });
