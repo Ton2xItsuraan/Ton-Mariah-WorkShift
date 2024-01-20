@@ -269,7 +269,7 @@ export const getCompanyById = async (req, res, next) => {
         const { id } = req.params;
 
         const company = await Companies.findById({ _id: id }).populate({
-            path: "jobposts",
+            path: "jobPosts",
             options: {
                 sort: "-_id",
             }

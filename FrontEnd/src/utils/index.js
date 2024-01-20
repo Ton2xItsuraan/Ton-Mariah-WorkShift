@@ -30,8 +30,7 @@ export const apiRequest = async({url, token, data, method}) => {
 export const handleFileUpload = async(uploadFile) => {
     const formData = new FormData();
     formData.append("file", uploadFile);
-    formData.append("upload_preset", "workshiftApp");
-
+    formData.append("upload_preset", "WorkShift");
     try {
         const response = await axios.post(
             "https://api.cloudinary.com/v1_1/dpi9gudid/image/upload/",
@@ -50,7 +49,7 @@ export const updateURL = ({
     sort,
     navigate,
     location,
-    jtype,
+    jType,
     exp,
 }) => {
     const params = new URLSearchParams();

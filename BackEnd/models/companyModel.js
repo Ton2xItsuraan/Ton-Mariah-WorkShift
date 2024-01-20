@@ -25,7 +25,7 @@ const companySchema = new mongoose.Schema({
     location: {type: String},
     about: {type: String},
     profileUrl: {type: String},
-    jobposts: [{ type: Schema.Types.ObjectId, ref: 'Jobs' }],
+    jobPosts: [{ type: Schema.Types.ObjectId, ref: 'Jobs' }],
 });
 
 companySchema.pre("save", async function () {
